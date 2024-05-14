@@ -1,6 +1,8 @@
-import WeatherAPI.DayQueryResult;
-import WeatherAPI.HourQueryResult;
-import WeatherAPI.RandomImplementation.RandomDayQuery;
+package com.example.astrocast2;
+
+import com.example.astrocast2.WeatherAPI.DayQueryResult;
+import com.example.astrocast2.WeatherAPI.HourQueryResult;
+import com.example.astrocast2.WeatherAPI.RandomImplementation.RandomDayQuery;
 
 public class RandomWeatherTestMain {
     public static void main(String[] args) {
