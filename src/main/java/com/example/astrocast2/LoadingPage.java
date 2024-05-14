@@ -5,11 +5,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class loadingPage extends Application{
+public class LoadingPage extends Application{
     final private double screenWidth;
     final private double screenHeight;
 
-    public loadingPage(double x, double y){
+    public LoadingPage(double x, double y){
         screenWidth = x;
         screenHeight = y;
     }
@@ -28,3 +28,4 @@ public class loadingPage extends Application{
         primaryStage.setTitle("Loading");
     }
 }
+
