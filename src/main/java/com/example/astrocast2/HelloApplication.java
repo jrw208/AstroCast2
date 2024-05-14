@@ -11,17 +11,22 @@ import java.io.IOException;
 public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        // Retrieve the screen size
-        Screen screen = Screen.getPrimary();
-        double screenWidth = screen.getBounds().getWidth();
-        double screenHeight = screen.getBounds().getHeight();
-        // Creates the screen with the retrieved proportions
-        Scene scene = new Scene(fxmlLoader.load(), screenWidth*0.8, screenHeight*0.8);
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            // Retrieve the screen size
+            Screen screen = Screen.getPrimary();
+            double screenWidth = screen.getBounds().getWidth();
+            double screenHeight = screen.getBounds().getHeight();
+            // Creates the screen with the retrieved proportions
+            Scene scene = new Scene(fxmlLoader.load(), screenWidth*0.8, screenHeight*0.8);
 
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+            stage.setTitle("Hello!");
+            stage.setScene(scene);
+            stage.show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
     }
 
     public static void main(String[] args) {
