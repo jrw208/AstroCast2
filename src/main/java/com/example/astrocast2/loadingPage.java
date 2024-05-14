@@ -6,8 +6,8 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class loadingPage extends Application{
-    private double screenWidth;
-    private double screenHeight;
+    final private double screenWidth;
+    final private double screenHeight;
 
     public loadingPage(double x, double y){
         screenWidth = x;
