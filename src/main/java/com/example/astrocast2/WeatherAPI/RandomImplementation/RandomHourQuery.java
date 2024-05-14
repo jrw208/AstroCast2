@@ -6,9 +6,9 @@ import com.example.astrocast2.WeatherAPI.HourQueryResult;
 public class RandomHourQuery implements HourQuery {
 
     @Override
-    public HourQueryResult queryHour(float latitude, float longitude, int hoursAfterMidnight) {
-        float noise = noise(hoursAfterMidnight / 8f, latitude + longitude);
-        float noise2 = noise(hoursAfterMidnight, latitude + longitude) - 0.5f;
+    public HourQueryResult queryHour(float easting, float northing, int hoursAfterMidnight) {
+        float noise = noise(hoursAfterMidnight / 8f, easting + northing);
+        float noise2 = noise(hoursAfterMidnight, easting + northing) - 0.5f;
         int seed = Math.round(1 + 9 * noise);
         return new HourQueryResult(
             new RandomCloudCoverMetric(seed),

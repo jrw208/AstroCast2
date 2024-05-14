@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class ForecastPage {
     public void display(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("hello-view.fxml"));
         // Retrieve the screen size
         Screen screen = Screen.getPrimary();
         double screenWidth = screen.getBounds().getWidth();
