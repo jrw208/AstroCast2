@@ -15,10 +15,10 @@ import org.json.JSONArray;
 public class OWM {
     private static JSONObject getJsonObject(String location) throws IOException {
         String key = "8324540866cbe4244662ae883059cdd8";
-        String urlString = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + key
+        String urlM = "http://api.openweathermap.org/data/2.5/weather?q=" + location + "&appid=" + key
                 + "&units=metric";
 
-        URL url = new URL(urlString);
+        URL url = new URL(urlM);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -36,9 +36,9 @@ public class OWM {
     //Forecast Data
     private static JSONObject getJsonObjects(String location) throws IOException {
         String key = "60d997ca8558af7b373a6ccf682d828e";
-        String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + key + "&units=metric";
+        String urlM = "http://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + key + "&units=metric";
 
-        URL url = new URL(urlString);
+        URL url = new URL(urlM);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
