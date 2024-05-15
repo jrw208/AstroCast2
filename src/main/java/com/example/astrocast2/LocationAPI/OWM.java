@@ -9,6 +9,8 @@ import java.net.URL;
 import java.util.Scanner;
 
 import org.json.JSONObject;
+import org.json.JSONArray;
+
 
 public class OWM {
     private static JSONObject getJsonObject(String location) throws IOException {
@@ -22,6 +24,27 @@ public class OWM {
         BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
         String line;
         StringBuilder responseContent = new StringBuilder();
+
+        while ((line = reader.readLine()) != null) {
+            responseContent.append(line);
+        }
+        reader.close();
+
+        return new JSONObject(responseContent.toString());
+    }
+
+    //Forecast Data
+    private static JSONObject getJsonObjects(String location) throws IOException {
+        String key = "60d997ca8558af7b373a6ccf682d828e";
+        String urlString = "http://api.openweathermap.org/data/2.5/forecast?q=" + location + "&appid=" + key + "&units=metric";
+
+        URL url = new URL(urlString);
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+        String line;
+        StringBuilder responseContent = new StringBuilder();
+
 
         while ((line = reader.readLine()) != null) {
             responseContent.append(line);
@@ -51,6 +74,18 @@ public class OWM {
 
         System.out.println(sunrise);
         System.out.println(sunset);
+
+        JSONArray forecastData = getJsonObjects(location).getJSONArray("list");
+
+        //All available forecast data - 5 day period in 3 hour increments
+        for (int i = 0; i < forecastData.length(); i++) {
+            JSONObject object = forecastData.getJSONObject(i);
+            String date = object.getString("dt_txt");
+            double futureTemp = Math.round(object.getJSONObject("main").getDouble("temp"));
+            int cloudCover = object.getJSONObject("clouds").getInt("all");
+            System.out.println(date + " Temperature: " + futureTemp + " Cloud Cover (%): " + cloudCover);
+
+        }
 
     }
 
